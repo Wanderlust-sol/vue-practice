@@ -1,26 +1,20 @@
 <template>
   <div>
     Next
-    <button @click="globalButton">click</button>
+    <div>{{text}}</div>
+    <ComputedSetter :text="'안녕'"></ComputedSetter>
   </div>
 </template>
 
 <script>
-import { EventBus } from "@/event-bus";
-export default {
-  data() {
-    return {
-      clickedCount: 0,
-    };
-  },
-  methods: {
-    globalButton() {
-      this.clickedCount++;
+import ComputedSetter from "@/components/ComputedSetter";
 
-      EventBus.$emit("use-eventbut", this.clickedCount);
-    },
-  },
+export default {
+  components: { ComputedSetter },
+  data() {
+    return {};
+  }
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
