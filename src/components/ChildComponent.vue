@@ -11,20 +11,20 @@ export default {
   props: {
     parentMessage: {
       type: String,
-      default: void 0,
-    },
+      default: void 0
+    }
   },
   data() {
     return {
-      clickedCount: 0,
+      clickedCount: 0
     };
   },
   methods: {
     sendEvent() {
       this.clickedCount++;
       EventBus.$emit("use-eventbus", this.clickedCount);
-    },
-  },
+    }
+  }
 };
 </script>
 
