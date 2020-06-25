@@ -6,14 +6,21 @@
     <button @click="getMembers">버튼</button>
     <!-- <div>{{text}}</div> -->
     <ComputedSetter :text="'안녕'"></ComputedSetter>
+    <SlotWrapper>
+      <template #header>머리다</template>
+      <p>몸통이다</p>
+      <template v-slot:footer="slotProps">{{slotProps.user.firstName}}</template>
+      <template v-slot:other="{user}">{{user.lastName}}</template>
+    </SlotWrapper>
   </div>
 </template>
 
 <script>
 import ComputedSetter from "@/components/ComputedSetter";
+import SlotWrapper from "@/components/SlotWrapper";
 
 export default {
-  components: { ComputedSetter },
+  components: { ComputedSetter, SlotWrapper },
   data() {
     return {
       members: {},
@@ -38,7 +45,7 @@ export default {
     }
   },
   created() {
-    console.log(this.members);
+    //console.log(this.members);
   }
 };
 </script>
