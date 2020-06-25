@@ -12,6 +12,18 @@
       <template v-slot:footer="slotProps">{{slotProps.user.firstName}}</template>
       <template v-slot:other="{user}">{{user.lastName}}</template>
     </SlotWrapper>
+    <div>
+      <button @click="counterComputed++">computed button</button>
+      <p>{{ counterComputed }}</p>
+
+      <button @click="counterMethod++">method button</button>
+      <p>{{ counterMethod }}</p>
+
+      <div>
+        {{ printTextMethod() }}
+        {{ printTextComputed }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -24,8 +36,18 @@ export default {
   data() {
     return {
       members: {},
-      membersArray: []
+      membersArray: [],
+      counterComputed: 0,
+      counterMethod: 0
     };
+  },
+  computed: {
+    printTextComputed: function() {
+      return console.log(
+        "counter printed from computed:",
+        this.counterComputed
+      );
+    }
   },
   methods: {
     getMembers() {
@@ -42,6 +64,9 @@ export default {
       this.$set(this.membersArray, 0, myNewValue);
       console.log(this.members);
       console.log(this.membersArray);
+    },
+    printTextMethod: function() {
+      console.log("counter printed from method:", this.counterMethod);
     }
   },
   created() {
